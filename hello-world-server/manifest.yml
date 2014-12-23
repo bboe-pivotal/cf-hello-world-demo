@@ -3,14 +3,14 @@ applications:
 - name: hello-svc-english
   memory: 512M
   instances: 1
-  host: hello-svc-eng-bboe
+  host: hello-svc-eng-${random-word}
   path: build/libs/hello-world-service.war
   env:
     HelloWorldTemplate: Hello, %s!
 - name: hello-svc-italian
   memory: 512M
   instances: 1
-  host: hello-svc-ita-bboe
+  host: hello-svc-ita-${random-word}
   path: build/libs/hello-world-service.war
   env:
     HelloWorldTemplate: Ciao, %s!
