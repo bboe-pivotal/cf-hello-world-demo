@@ -52,7 +52,7 @@ hello-italian   user-provided
 ```
 It's important that at least the hello-english service have been created as the client components requires this service in order to deploy.
 
-###Compile and Deploy Client Components
+###Compile and Deploy Client Component
 * Go to hello-world-client directory
 ```bash
 cd ../hello-world-client/
