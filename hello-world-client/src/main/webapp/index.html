@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>Hello World Client</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<script>
+	function sayHello() {
+		var toWho = document.getElementById('sayHelloTo').value;
+		var submiturl="greeting?name="+encodeURIComponent(toWho);
+		$.ajax({
+	        url: submiturl
+	    }).then(function(data) {
+			document.getElementById("result").innerHTML=data.content;
+	    });		
+	}
+</script>
+
+
+<h1>Hello World Client</h1>
+Say Hello To:
+<input type="text" name="sayHelloTo" id="sayHelloTo" onkeyup="sayHello()">
+<h2>Result</h2>
+<div id="result">(result)</div>
+</body>
+</html>

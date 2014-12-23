@@ -1,0 +1,10 @@
+---
+applications:
+- name: hello-client
+  memory: 512M
+  instances: 1
+  host: hello-client-${random-word}
+  path: build/libs/hello-world-client-0.0.1-SNAPSHOT.war
+  services:
+  - hello-english
+
