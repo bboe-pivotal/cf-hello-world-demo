@@ -4,13 +4,13 @@ applications:
   memory: 512M
   instances: 1
   host: hello-svc-eng-${random-word}
-  path: build/libs/hello-world-service.war
+  path: build/libs/hello-world-server.war
   env:
     HelloWorldTemplate: Hello, %s!
 - name: hello-svc-italian
   memory: 512M
   instances: 1
   host: hello-svc-ita-${random-word}
-  path: build/libs/hello-world-service.war
+  path: build/libs/hello-world-server.war
   env:
     HelloWorldTemplate: Ciao, %s!
