@@ -10,19 +10,19 @@ git clone https://github.com/bboe-pivotal/cf-hello-world-demo/
 ```
 ###Compile and Deploy Server Components
 * Go to hello-world-server directory
-```bash
+```
 cd cf-hello-world-demo/hello-world-server/
 ```
 * Build application using Gradle
-```bash
+```
 ./gradlew clean assemble
 ```
 * Push to Cloud Foundry using settings in local manifest.yml
-```bash
+```
 cf push
 ```
 Use the following command to see more information on the applications that were just deployed:
-```bash
+```
 cf apps
 
 Getting apps in org xxx / space yyy as zzz...
@@ -37,12 +37,12 @@ The push command just uploaded two applications to Cloud Foundry: One Hello Worl
 The server end-points can be tested by accessing the server end-points. This will yield a simple test case that triggers a RESTful call to the Hello World service.
 
 The last that needs to be done is to create two user provided services for the client that contains information about the server end-points just deployed:
-```bash
+```
 cf cups hello-english -p '{"uri":"http://hello-svc-eng..."}'
 cf cups hello-italian -p '{"uri":"http://hello-svc-ita..."}'
 ```
 Enter the URL for each service as shown by the ```cf apps``` command. Run ```cf services``` to verify the services have been created as follows:
-```bash
+```
 Getting services in org xxx / space yyy as zzz...
 OK
 
@@ -54,19 +54,19 @@ It's important that at least the hello-english service have been created as the 
 
 ###Compile and Deploy Client Component
 * Go to hello-world-client directory
-```bash
+```
 cd ../hello-world-client/
 ```
 * Build application using Gradle
-```bash
+```
 ./gradlew clean assemble
 ```
 * Push to Cloud Foundry using settings in local manifest.yml
-```bash
+```
 cf push
 ```
 Use the ```cf apps``` command to verfiy that all components have been successfully deployed:
-```bash
+```
 Getting apps in org xxx / space yyy as zzz...
 OK
 
@@ -76,7 +76,7 @@ hello-svc-english   started           1/1         512M     1G     hello-svc-eng-
 hello-svc-italian   started           1/1         512M     1G     hello-svc-ita-nondistorted-dominance.cfapps.io
 ```
 The Hello Client is by default configured to use the English Hello World service. Use the following commands to reconfigure the Hello Client to use the Italian Hello World service:
-```bash
+```
 cf unbind-service hello-client hello-english
 cf bind-service hello-client hello-italian
 cf restage hello-client
