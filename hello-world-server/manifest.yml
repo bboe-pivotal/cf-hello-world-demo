@@ -1,0 +1,16 @@
+---
+applications:
+- name: hello-svc-english
+  memory: 512M
+  instances: 1
+  host: hello-svc-eng-bboe
+  path: build/libs/hello-world-service.war
+  env:
+    HelloWorldTemplate: Hello, %s!
+- name: hello-svc-italian
+  memory: 512M
+  instances: 1
+  host: hello-svc-ita-bboe
+  path: build/libs/hello-world-service.war
+  env:
+    HelloWorldTemplate: Ciao, %s!
