@@ -15,11 +15,12 @@ public class HelloClientController {
     SystemConfiguration systemConfiguration;
 
     @RequestMapping("/greeting")
-    public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
-    	System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXX greeting XXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name,
+                            @RequestParam(value="id", defaultValue="0") Long id) {
+    	System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXX greeting ("+name+", "+id+") XXXXXXXXXXXXXXXXXXXXXXXXXXXX");
     	RestTemplate restTemplate = new RestTemplate();
     	String uri = systemConfiguration.getRemoteURI();
     	Greeting result = restTemplate.getForObject(uri + "/greeting?name="+name, Greeting.class);
-        return new Greeting(result.getId(), result.getContent());
+        return new Greeting(id, result.getContent());
     }
 }

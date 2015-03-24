@@ -5,14 +5,20 @@
 </head>
 <body>
 <script>
+	var requestIdCounter = 0;
+	var lastRecievedId = -1;
+
 	function sayHello() {
 		var toWho = document.getElementById('sayHelloTo').value;
-		var submiturl="greeting?name="+encodeURIComponent(toWho);
+		var submiturl="greeting?name="+encodeURIComponent(toWho)+"&id="+requestIdCounter++;
 		$.ajax({
 	        url: submiturl
 	    }).then(function(data) {
-			document.getElementById("result").innerHTML=data.content;
-	    });		
+			if(data.id > lastRecievedId) {
+				lastRecievedId = data.id;
+				document.getElementById("result").innerHTML=data.content;
+			}
+	    });
 	}
 </script>
 
